@@ -27,8 +27,16 @@ export default function Create() {
   const { documents, error } = useCollection('users', [firebase.firestore.FieldPath.documentId(), "!=", user.uid])  
   
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(assignedUsers)
+    e.preventDefault()
+    setFormError(null)
+    
+    if(!category.length < 1 || !assignedUsers.length < 0){
+      setFormError("Missing fields")
+      return
+    }
+    
+    
+    
   }
   
   useEffect(() => {
