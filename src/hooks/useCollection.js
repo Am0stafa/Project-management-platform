@@ -15,6 +15,7 @@ export const useCollection = (collection, _query, _orderBy) => {
 
     if (query) {
       ref = ref.where(...query)
+
     }
     if (orderBy) {
       ref = ref.orderBy(...orderBy)
@@ -23,7 +24,7 @@ export const useCollection = (collection, _query, _orderBy) => {
     const unsubscribe = ref.onSnapshot(snapshot => {
       let results = []
       snapshot.docs.forEach(doc => {
-        results.push({...doc.data(), id: doc.id})
+        results.push({id: doc.id,...doc.data()})
       });
       
       // update state

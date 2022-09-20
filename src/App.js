@@ -38,12 +38,12 @@ function App() {
                 {user && <Project />}
               </Route>
               <Route path="/login">
-                {user && <Redirect to="/" /> }
                 {!user && <Login /> }
+                {user && <Redirect to="/" /> }
               </Route>
               <Route path="/signup">
-                {user && user.displayName && <Redirect to="/" /> }
                 {!user && <Signup /> }
+                {user && <Redirect to="/" /> }
               </Route>
             </Switch>
           </div>
