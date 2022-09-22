@@ -1,10 +1,13 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import { timestamp } from '../../firebase/config'
 import { useEffect, useState } from 'react'
 import './Create.css'
 import Select from 'react-select'
-import {useAuthContext} from '../../hooks/useAuthContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 import { useCollection } from '../../hooks/useCollection'
+import { useFirestore } from '../../hooks/useFirestore'
+import { useHistory } from 'react-router-dom'
 
 
 const categories = [
@@ -23,20 +26,40 @@ export default function Create() {
   const [assignedUsers, setAssignedUsers] = useState([])
   const [formError, setFormError] = useState(null)
   
+  const { addDocument, response } = useFirestore('projects')
   const { user } = useAuthContext();
   const { documents, error } = useCollection('users', [firebase.firestore.FieldPath.documentId(), "!=", user.uid])  
+  const history = useHistory();
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setFormError(null)
-    
-    if(!category.length < 1 || !assignedUsers.length < 0){
+          
+    if(!category || assignedUsers.length < 1){
       setFormError("Missing fields")
       return
     }
     
+    const assignedUsersList = assignedUsers.map((u)=>{
+      return u.value
+    })
     
+    //! this is the document that we will save in the database
+    const project = {
+      name,
+      details,
+      assignedUsersList,
+      createdBy:user.uid,
+      category,
+      dueDate:timestamp.fromDate(new Date(dueDate)),
+      comments:[],
+    };
     
+    await addDocument(project)
+    
+    if (!response.error) {
+      history.push('/')
+    }
   }
   
   useEffect(() => {
@@ -88,7 +111,7 @@ export default function Create() {
         <label>
           <span>Project category:</span>
           <Select
-            onChange={(option) => setCategory(option)}
+            onChange={(option) => setCategory(option.value)}
             options={categories}
           />
         </label>
