@@ -14,6 +14,7 @@ export default function Project() {
     return <div className="loading">Loading...</div>
   }
   
+  
 
   return (
     <div>
