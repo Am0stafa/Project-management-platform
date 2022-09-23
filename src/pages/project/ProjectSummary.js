@@ -5,6 +5,7 @@ import { useFirestore } from "../../hooks/useFirestore"
 import { useHistory } from 'react-router-dom'
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useCollection } from '../../hooks/useCollection';
+import { useDocument } from '../../hooks/useDocument';
 
 const ProjectSummary = ({project}) => {
   const { deleteDocument } = useFirestore('projects')
@@ -13,8 +14,6 @@ const ProjectSummary = ({project}) => {
 
 
   const change = () => {
-    const pro = {...project}
-    
     const assignedUsersList = project.assignedUsersList.map((ass)=>{
       const { documents, error } = useCollection('users', [firebase.firestore.FieldPath.documentId(), "==", ass])
       return documents?.[0]
@@ -27,11 +26,15 @@ const ProjectSummary = ({project}) => {
     deleteDocument(project.id)
     history.push('/')
   }
-
+  
+  const { document, error } = useDocument('users',project.createdBy)
+  console.log(document)
+  
   return (
     <div>
       <div className="project-summary">
         <h2 className="page-title">{project.name}</h2>
+        <p>By {document?.displayName}</p>
         <p className="due-date">
           Project due by {project.dueDate.toDate().toDateString()}
         </p>
