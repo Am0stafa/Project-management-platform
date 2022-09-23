@@ -15,23 +15,18 @@ const ProjectSummary = ({project}) => {
   const change = () => {
     const pro = {...project}
     
-   const assignedUsersList = project.assignedUsersList.map((ass)=>{
+    const assignedUsersList = project.assignedUsersList.map((ass)=>{
       const { documents, error } = useCollection('users', [firebase.firestore.FieldPath.documentId(), "==", ass])
       return documents?.[0]
-
-   })
-      
+    })  
     return assignedUsersList
+  }
+  const pros = change()
 
-    }
-
-  
-    const pros = change()
-  console.log(pros)
-
-    const handleClick = () =>{
-    
-    }
+  const handleClick = (e) =>{
+    deleteDocument(project.id)
+    history.push('/')
+  }
 
   return (
     <div>
@@ -46,8 +41,8 @@ const ProjectSummary = ({project}) => {
         <h4>Project assigned to:</h4>
         <div className="assigned-users">
           {pros?.map(user => (
-            <div key={user.id}>
-              <Avatar src={user.photoURL} />
+            <div key={user?.id}>
+              <Avatar src={user?.photoURL} />
             </div>
           ))}
         </div>
