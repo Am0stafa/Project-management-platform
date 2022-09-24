@@ -1,12 +1,12 @@
 import { useState } from 'react'
-const filterList = ['all', 'mine', 'development', 'design', 'marketing', 'sales'] //^ output a button for each one
+const filterList = ['all', 'assigned to me', 'development', 'design', 'marketing', 'sales'] //^ output a button for each one
 
 const ProjectFilter = ({changeFilter}) => {
   const [currentFilter, setCurrentFilter] = useState('all')
 
   const handleClick = (filter) => {
     setCurrentFilter(filter)
-  
+    changeFilter(filter)
   }
 
   return (
