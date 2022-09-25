@@ -28,7 +28,7 @@ const ProjectSummary = ({project}) => {
   }
   
   const { document, error } = useDocument('users',project.createdBy)
-  console.log(document)
+
   
   return (
     <div>
