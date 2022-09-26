@@ -1,3 +1,2 @@
 # Project-management-application
-- deploy
-- refactor RRD
+- https://project-manger-56f5b.web.app/
