@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import Avatar from "../../components/Avatar"
 import { useFirestore } from "../../hooks/useFirestore"
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useCollection } from '../../hooks/useCollection';
 import { useDocument } from '../../hooks/useDocument';
@@ -10,7 +10,7 @@ import { useDocument } from '../../hooks/useDocument';
 const ProjectSummary = ({project}) => {
   const { deleteDocument } = useFirestore('projects')
   const { user } = useAuthContext()
-  const history = useHistory()
+  const history = useNavigate()
 
 
   const change = () => {
@@ -22,15 +22,15 @@ const ProjectSummary = ({project}) => {
   }
   const pros = change()
 
-  const handleClick = (e) =>{
-    deleteDocument(project.id)
-    history.push('/')
+  const handleClick = async(e) =>{
+    await deleteDocument(project.id)
+    history('/')
   }
   
   const { document, error } = useDocument('users',project.createdBy)
 
   
-  return (
+  return  (
     <div>
       <div className="project-summary">
         <h2 className="page-title">{project.name}</h2>
@@ -43,8 +43,8 @@ const ProjectSummary = ({project}) => {
         </p>
         <h4>Project assigned to:</h4>
         <div className="assigned-users">
-          {pros?.map(user => (
-            <div key={user?.id}>
+          {pros && pros?.map(user => (
+            <div key={parseInt(user?.id)}>
               <Avatar src={user?.photoURL} />
             </div>
           ))}

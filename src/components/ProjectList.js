@@ -7,7 +7,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 export default function ProjectList({ projects }) {
-  console.log(projects)
+
   
   const change = () => {
     const pro = [...projects]

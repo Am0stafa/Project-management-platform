@@ -41,7 +41,7 @@ export default function Dashboard() {
   
   }) : []
 
-  console.log(documents)
+
   
   return (
     <div>

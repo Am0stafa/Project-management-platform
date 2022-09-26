@@ -7,7 +7,7 @@ import Select from 'react-select'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useCollection } from '../../hooks/useCollection'
 import { useFirestore } from '../../hooks/useFirestore'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 const categories = [
@@ -29,7 +29,7 @@ export default function Create() {
   const { addDocument, response } = useFirestore('projects')
   const { user } = useAuthContext();
   const { documents, error } = useCollection('users', [firebase.firestore.FieldPath.documentId(), "!=", user.uid])  
-  const history = useHistory();
+  const history = useNavigate();
   
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -58,7 +58,7 @@ export default function Create() {
     await addDocument(project)
     
     if (!response.error) {
-      history.push('/')
+      history('/')
     }
   }
   
