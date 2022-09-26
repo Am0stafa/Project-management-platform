@@ -1,0 +1,13 @@
+//! change the user to a offline status
+
+//! limit size and only image and not null
+
+//! look at the filter state and based on that value filter the projects
+
+//! setup a real time listener to a specific document whereby we pass the id of that document and collection name
+
+//! takes in some documents and output on a list of those documents
+
+//! this is the document that we will save in the database
+
+//! upload the image into user folder

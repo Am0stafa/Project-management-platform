@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f93e7b89.chunk.css",
+    "main.js": "/static/js/main.cbdc2508.chunk.js",
+    "main.js.map": "/static/js/main.cbdc2508.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.aa6d2065.js",
+    "runtime-main.js.map": "/static/js/runtime-main.aa6d2065.js.map",
+    "static/js/2.6e3d7bff.chunk.js": "/static/js/2.6e3d7bff.chunk.js",
+    "static/js/2.6e3d7bff.chunk.js.map": "/static/js/2.6e3d7bff.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.f93e7b89.chunk.css.map": "/static/css/main.f93e7b89.chunk.css.map",
+    "static/js/2.6e3d7bff.chunk.js.LICENSE.txt": "/static/js/2.6e3d7bff.chunk.js.LICENSE.txt",
+    "static/js/main.cbdc2508.chunk.js.LICENSE.txt": "/static/js/main.cbdc2508.chunk.js.LICENSE.txt",
+    "static/media/add_icon.376e9b6a.svg": "/static/media/add_icon.376e9b6a.svg",
+    "static/media/dashboard_icon.bc800f3b.svg": "/static/media/dashboard_icon.bc800f3b.svg",
+    "static/media/temple.c57f882d.svg": "/static/media/temple.c57f882d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aa6d2065.js",
+    "static/js/2.6e3d7bff.chunk.js",
+    "static/css/main.f93e7b89.chunk.css",
+    "static/js/main.cbdc2508.chunk.js"
+  ]
+}
