@@ -19,6 +19,7 @@ export const useSignup = () => {
       if (!res) {
         throw new Error('Could not complete signup')
       }
+      
     
       //! upload the image into user folder
       
