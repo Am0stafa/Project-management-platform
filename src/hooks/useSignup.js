@@ -60,10 +60,49 @@ export const useSignup = () => {
       }
     }
   }
+  
+  const signupForGoogle = async (email, displayName, image) => { 
+  
+    setError(null)
+    setIsPending(true)
+  
+  
+    try {
 
+      const uploadPath = `thumbnail/${res.user.uid}/${image.name}`
+      
+      const img = await storage.ref(uploadPath).put(image)
+      
+      const photoURL = await img.ref.getDownloadURL()
+      
+      await res.user.updateProfile({ displayName, photoURL })
+    
+      await db.collection('users').doc(res.user.uid).set({
+        online:true,
+        displayName,
+        photoURL,
+      })
+
+
+      dispatch({ type: 'LOGIN', payload: res.user })
+
+      if (!isCancelled) {
+        setIsPending(false)
+        setError(null)
+      }
+    } 
+    catch(err) {
+      if (!isCancelled) {
+        setError(err.message)
+        setIsPending(false)
+      }
+    }
+  }
+  
+  
   useEffect(() => {
     return () => setIsCancelled(true)
   }, [])
 
-  return { signup, error, isPending }
+  return { signup, error, isPending,signupForGoogle }
 }

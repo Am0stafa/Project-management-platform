@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { useLogin } from '../../hooks/useLogin'
-
+import './Login.css'
+import { useSignup } from '../../hooks/useSignup';
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { login, error, isPending,signInWithGoogle } = useLogin()
+  const { login,loginForGoogle, error, isPending,signInWithGoogle } = useLogin()
+  const { signupForGoogle } = useSignup()
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -32,7 +35,7 @@ export default function Login() {
           value={password} 
         />
       </label>
-      <button  class="login-with-google-btn" onClick={signInWithGoogle}>SignIn with google</button>
+      <button  class="loginBtn loginBtn--google" onClick={()=>signInWithGoogle(loginForGoogle,signupForGoogle)}>SignIn with google</button>
       
       {!isPending && <button className="btn">Log in</button>}
       {isPending && <button className="btn" disabled>loading</button>}

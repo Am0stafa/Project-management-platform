@@ -31,10 +31,14 @@ export const useLogin = () => {
       }
     }
   }
+  
+  const loginForGoogle = () => { 
+    dispatch({ type: 'LOGIN', payload: res.user })
+  }
 
   useEffect(() => {
     return () => setIsCancelled(true)
   }, [])
 
-  return { login, isPending, error,signInWithGoogle }
+  return { login, isPending, error,signInWithGoogle,loginForGoogle }
 }

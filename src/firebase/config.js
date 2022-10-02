@@ -26,7 +26,7 @@ const timestamp = firebase.firestore.Timestamp
 
 var provider = new firebase.auth.GoogleAuthProvider();
 
-const signInWithGoogle = () => { 
+const signInWithGoogle = (login,signup) => { 
     
     auth
         .signInWithPopup(provider)
@@ -36,8 +36,11 @@ const signInWithGoogle = () => {
             var credential = result.credential;
             var token = credential.accessToken;
             var user = result.user;
-            console.log(user)
             const {name , email , profilePic} = user;
+            
+            //TODO: if the user exist dispatch else signup
+            
+
             
     
         }).catch((error) => {
