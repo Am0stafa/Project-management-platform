@@ -37,7 +37,6 @@ export default function Signup() {
       return
     }
     
-    console.log('added')
     setThumbnail(file)
   }
   

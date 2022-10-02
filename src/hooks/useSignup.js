@@ -12,6 +12,7 @@ export const useSignup = () => {
     setError(null)
     setIsPending(true)
   
+  
     try {
       // signup
       const res = await auth.createUserWithEmailAndPassword(email, password)

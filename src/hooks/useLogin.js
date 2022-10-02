@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { auth } from '../firebase/config'
+import { auth,signInWithGoogle } from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
 
 export const useLogin = () => {
@@ -36,5 +36,5 @@ export const useLogin = () => {
     return () => setIsCancelled(true)
   }, [])
 
-  return { login, isPending, error }
+  return { login, isPending, error,signInWithGoogle }
 }
