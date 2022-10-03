@@ -3,20 +3,22 @@ import { useLogin } from '../../hooks/useLogin'
 import './Login.css'
 import { useSignup } from '../../hooks/useSignup';
 
+
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { login,loginForGoogle, error, isPending,signInWithGoogle } = useLogin()
-  const { signupForGoogle } = useSignup()
+  const { login,google, error, isPending } = useLogin()
 
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log("t")
     login(email, password)
   }
 
   return (
-    <form onSubmit={handleSubmit} className="auth-form">
+    <>
+    <form className="auth-form" onSubmit={handleSubmit}>
       <h2>login</h2>
       <label>
         <span>email:</span>
@@ -35,11 +37,13 @@ export default function Login() {
           value={password} 
         />
       </label>
-      <button  class="loginBtn loginBtn--google" onClick={()=>signInWithGoogle(loginForGoogle,signupForGoogle)}>SignIn with google</button>
-      
-      {!isPending && <button className="btn">Log in</button>}
-      {isPending && <button className="btn" disabled>loading</button>}
+
+       {!isPending && <button className="btn">Log in</button>}
+      {isPending && <button className="btn"  type="submit" disabled>loading</button>}
       {error && <div className="error">{error}</div>}
     </form>
+    <button className="loginBtn loginBtn--google" onClick={google}> SignIn with google</button>
+
+    </>
   )
 }

@@ -24,10 +24,8 @@ const storage = firebase.storage()
 // timestamp
 const timestamp = firebase.firestore.Timestamp
 
-var provider = new firebase.auth.GoogleAuthProvider();
+const signInWithGoogle = (dispatch) => { 
 
-const signInWithGoogle = (login,signup) => { 
-    
     auth
         .signInWithPopup(provider)
         .then((result) => {
@@ -36,12 +34,17 @@ const signInWithGoogle = (login,signup) => {
             var credential = result.credential;
             var token = credential.accessToken;
             var user = result.user;
-            const {name , email , profilePic} = user;
+            console.log(user)
+            const {displayName , uid , photoURL} = user;
             
-            //TODO: if the user exist dispatch else signup
             
-
+            db.collection('users').doc(uid).set({
+                online:true,
+                displayName,
+                photoURL,
+            })
             
+            dispatch({ type: 'LOGIN', payload: user })
     
         }).catch((error) => {
           var errorCode = error.code;
@@ -55,5 +58,9 @@ const signInWithGoogle = (login,signup) => {
             console.log(error)
         });
 }
+
+var provider = new firebase.auth.GoogleAuthProvider();
+
+
 
 export { db, auth, timestamp, storage, provider,signInWithGoogle }

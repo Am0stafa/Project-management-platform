@@ -46,4 +46,3 @@ export default function Sidebar() {
     </div>
   )
 }
-//? show us the dashboard and create page

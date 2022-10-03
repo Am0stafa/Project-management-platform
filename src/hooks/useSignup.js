@@ -61,7 +61,7 @@ export const useSignup = () => {
     }
   }
   
-  const signupForGoogle = async (email, displayName, image) => { 
+  const signupForGoogle = async (id, displayName, image) => { 
   
     setError(null)
     setIsPending(true)
@@ -77,7 +77,7 @@ export const useSignup = () => {
       
       await res.user.updateProfile({ displayName, photoURL })
     
-      await db.collection('users').doc(res.user.uid).set({
+      await db.collection('users').doc(id).set({
         online:true,
         displayName,
         photoURL,
