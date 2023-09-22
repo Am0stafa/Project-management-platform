@@ -14,7 +14,7 @@ export default function ProjectList({ projects }) {
     const answer = []
     
     pro.forEach(project =>{
-      const assignedUsersList = project.assignedUsersList.map((ass)=>{
+      const assignedUsersList = project?.assignedUsersList?.map((ass)=>{
           const { documents, error } = useCollection('users', [firebase.firestore.FieldPath.documentId(), "==", ass])
           return documents?.[0]
 
@@ -37,7 +37,7 @@ export default function ProjectList({ projects }) {
 
   return (
     <div className="project-list">
-      {pros?.length === 0 && <p>No projects yet!!</p>}
+      {pros?.length === 0 && <p>No Tasks yet!!</p>}
       {pros?.map((project) => (
         <Link to={`/projects/${project.id}`} key={project?.id ?? Math.random()}>
           <h4>{project?.name}</h4>

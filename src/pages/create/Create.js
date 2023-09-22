@@ -12,9 +12,9 @@ import { useNavigate } from 'react-router-dom'
 
 const categories = [
   { value: 'development', label: 'Development' },
-  { value: 'design', label: 'Design' },
-  { value: 'sales', label: 'Sales' },
-  { value: 'marketing', label: 'Marketing' },
+  { value: 'bug', label: 'Bug' },
+  { value: 'security issue', label: 'Security issue' },
+  { value: 'business issue', label: 'Business issue' },
 ]
 
 export default function Create() {

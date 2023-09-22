@@ -5,6 +5,8 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { useCollection } from '../hooks/useCollection'
 import Avatar from './Avatar'
 import './OnlineUsers.css'
+import ChatButton from './ChatButton';
+
 
 export default function OnlineUsers() {
   const {user} = useAuthContext();
@@ -21,6 +23,8 @@ export default function OnlineUsers() {
           <Avatar src={user.photoURL} />
         </div>
       ))}
+      <h2>Chat</h2>
+        <ChatButton />
       {error && <div>{error}</div>}
     </div>
   )

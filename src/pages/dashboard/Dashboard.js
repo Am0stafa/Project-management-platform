@@ -31,9 +31,9 @@ export default function Dashboard() {
           return user.uid === id
         }).includes(true)
       case 'development':
-      case 'design':
-      case 'sales':
-      case 'marketing':
+      case 'bug':
+      case 'security issue':
+      case 'business issue':
         return document.category === filter
       default:
         return true

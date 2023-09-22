@@ -1,12 +1,13 @@
 import { useState } from 'react'
-const filterList = ['all', 'assigned to me', 'development', 'design', 'marketing', 'sales'] //^ output a button for each one
+const filterList = ['All', 'Assigned to me', 'Development', 'Bug', 'Security issue', 'Business issue'] //^ output a button for each one
 
 const ProjectFilter = ({changeFilter}) => {
   const [currentFilter, setCurrentFilter] = useState('all')
 
   const handleClick = (filter) => {
-    setCurrentFilter(filter)
-    changeFilter(filter)
+    console.log(filter.toLowerCase())
+    setCurrentFilter(filter.toLowerCase())
+    changeFilter(filter.toLowerCase())
   }
 
   return (
@@ -17,7 +18,7 @@ const ProjectFilter = ({changeFilter}) => {
             filterList.map((filter,id) =>(
               <button 
                 key={id} 
-                className={currentFilter === filter ? 'active' : ''} 
+                className={currentFilter.toLowerCase() === filter.toLowerCase() ? 'active' : ''} 
                 onClick={() => handleClick(filter)}
               >
                 {filter}
