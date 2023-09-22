@@ -24,7 +24,7 @@ const storage = firebase.storage()
 // timestamp
 const timestamp = firebase.firestore.Timestamp
 
-const signInWithGoogle = (dispatch) => { 
+const signInWithGoogle = (dispatch,setError) => { 
 
     auth
         .signInWithPopup(provider)
@@ -54,10 +54,12 @@ const signInWithGoogle = (dispatch) => {
           var email = error.email;
     
           var credential = error.credential;
-            
-            console.log(error)
+          
+          console.log(error)
+          setError(err.message)
         });
 }
+
 
 var provider = new firebase.auth.GoogleAuthProvider();
 

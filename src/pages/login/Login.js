@@ -7,8 +7,22 @@ import { useSignup } from '../../hooks/useSignup';
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { login,google, error, isPending } = useLogin()
+  const { login, google, error, isPending } = useLogin()
 
+  const dividerStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '20px 0',
+    position: 'relative'
+  };
+  
+  const lineStyle = {
+    flex: 1,
+    height: '1px',
+    background: '#ccc'
+  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -38,11 +52,20 @@ export default function Login() {
         />
       </label>
 
-       {!isPending && <button className="btn">Log in</button>}
-      {isPending && <button className="btn"  type="submit" disabled>loading</button>}
-      {error && <div className="error">{error}</div>}
+       {!isPending && <button className="btn">Login</button>}
+       {isPending && <button className="btn"  type="submit" disabled>loading</button>}
+       {error && <div className="error">{error}</div>}
+
+      <div style={dividerStyle}>
+        <div style={{...lineStyle, marginRight: '10px'}}></div>
+        or
+        <div style={{...lineStyle, marginLeft: '10px'}}></div>
+      </div>
+
+      <button className="loginBtn loginBtn--google" onClick={google}>Login with Google</button>
+
+
     </form>
-    <button className="loginBtn loginBtn--google" onClick={google}> SignIn with google</button>
 
     </>
   )

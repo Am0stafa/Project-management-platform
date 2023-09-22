@@ -79,10 +79,10 @@ export default function Create() {
   
   return  !error && (
     <div className="create-form">
-      <h2 className="page-title">Create a new Project</h2>
+      <h2 className="page-title">Create a new Task</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          <span>Project name:</span>
+          <span>Task name:</span>
           <input
             required 
             type="text" 
@@ -91,7 +91,7 @@ export default function Create() {
           />
         </label>
         <label>
-          <span>Project Details:</span>
+          <span>Task Details:</span>
           <textarea
             required
             style={{resize: "none"}}
@@ -109,7 +109,7 @@ export default function Create() {
           />
         </label>
         <label>
-          <span>Project category:</span>
+          <span>Task category:</span>
           <Select
             onChange={(option) => setCategory(option.value)}
             options={categories}

@@ -33,8 +33,10 @@ export const useLogin = () => {
   }
   
   const google = () => { 
-    signInWithGoogle(dispatch)
+    signInWithGoogle(dispatch,setError)
   }
+  
+
 
   useEffect(() => {
     return () => setIsCancelled(true)

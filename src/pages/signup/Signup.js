@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useSignup } from '../../hooks/useSignup'
 import './Signup.css'
 
+
 export default function Signup() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -11,9 +12,33 @@ export default function Signup() {
   const [thumbnailError, setThumbnailError] = useState(null)
   const { signup, error, isPending } = useSignup()
   
+  const dividerStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '20px 0',
+    position: 'relative'
+  };
+  
+  const lineStyle = {
+    flex: 1,
+    height: '1px',
+    background: '#ccc'
+  };
+
+  const google = () => {
+  }
   
   const handleSubmit = (e) => {
     e.preventDefault()
+    // regex for email validation
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const validEmail = emailRegex.test(email)
+    if(!validEmail){
+      alert('Please enter a valid email')
+      return;
+    }
+
     signup(email, password, displayName, thumbnail)
   }
   
@@ -84,6 +109,15 @@ export default function Signup() {
       {!isPending && <button className="btn">Sign up</button>}
       {isPending && <button className="btn" disabled>loading</button>}
       {error && <div className="error">{error}</div>}
+
+      <div style={dividerStyle}>
+        <div style={{...lineStyle, marginRight: '10px'}}></div>
+        or
+        <div style={{...lineStyle, marginLeft: '10px'}}></div>
+      </div>
+
+      <button className="loginBtn loginBtn--google" onClick={google}>Sign up with Google</button>
+
     </form>
 
   )
