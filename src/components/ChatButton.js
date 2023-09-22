@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 
 const ChatButton = () => {
     const [chatVisible, setChatVisible] = useState(false);
     const [messageCounterVisible, setMessageCounterVisible] = useState(true);
     const [message, setMessage] = useState('');
+    const {user} = useAuthContext();
 
     const toggleChat = () => {
         setChatVisible(!chatVisible);
@@ -119,34 +121,25 @@ const ChatButton = () => {
             <div className="chat" style={styles.chat}>
                 <div className="chat-history" style={styles.chatHistory}>
                     <div className="chat-message clearfix" style={styles.chatMessage}>
-                        <img src="http://lorempixum.com/32/32/people" alt="" width="32" height="32" style={styles.chatMessageImage} />
+                        <img src={user.photoURL} alt="" width="32" height="32" style={styles.chatMessageImage} />
                         <div className="chat-message-content clearfix" style={styles.chatMessageContent}>
                             <span className="chat-time" style={styles.chatTime}>13:35</span>
-                            <h5>John Doe</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.</p>
+                            <h5>{user.displayName}</h5>
+                            <p>chat functionality working</p>
                         </div>
                         <hr />
                     </div>
 
                     <div className="chat-message clearfix" style={styles.chatMessage}>
-                        <img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" alt="" width="32" height="32" style={styles.chatMessageImage} />
+                        <img src="https://firebasestorage.googleapis.com/v0/b/project-manger-56f5b.appspot.com/o/thumbnail%2FMWrNKrG9U0bavKUYQRnpwkFmsh02%2FF88934F7-4FBF-466C-A035-3237186670E9.jpeg?alt=media&token=8aaae6a2-bdd3-40e8-be23-4f3ff3b5e868" alt="" width="32" height="32" style={styles.chatMessageImage} />
                         <div className="chat-message-content clearfix" style={styles.chatMessageContent}>
                             <span className="chat-time" style={styles.chatTime}>13:37</span>
-                            <h5>Marco Biedermann</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, nulla accusamus magni vel debitis numquam qui tempora rem voluptatem delectus!</p>
+                            <h5>omar khalid</h5>
+                            <p>yes all good</p>
                         </div>
                         <hr />
                     </div>
 
-                    <div className="chat-message clearfix" style={styles.chatMessage}>
-                        <img src="http://lorempixum.com/32/32/people" alt="" width="32" height="32" style={styles.chatMessageImage} />
-                        <div className="chat-message-content clearfix" style={styles.chatMessageContent}>
-                            <span className="chat-time" style={styles.chatTime}>13:38</span>
-                            <h5>John Doe</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                        </div>
-                        <hr />
-                    </div>
                 </div>
 
                 <form onSubmit={handleSubmit}>
