@@ -5,7 +5,6 @@ const ProjectFilter = ({changeFilter}) => {
   const [currentFilter, setCurrentFilter] = useState('all')
 
   const handleClick = (filter) => {
-    console.log(filter.toLowerCase())
     setCurrentFilter(filter.toLowerCase())
     changeFilter(filter.toLowerCase())
   }

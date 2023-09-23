@@ -12,7 +12,7 @@ export default function Dashboard() {
   const { documents, error } = useCollection('projects')
   const [filter, setFilter] = useState('all')
 
-  
+
   const changeFilter = (newFilter) => {
     setFilter(newFilter)
   }

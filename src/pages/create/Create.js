@@ -53,6 +53,7 @@ export default function Create() {
       category,
       dueDate:timestamp.fromDate(new Date(dueDate)),
       comments:[],
+      type:'todo'
     };
     
     await addDocument(project)

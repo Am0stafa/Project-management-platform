@@ -52,7 +52,6 @@ export default function ProjectList({ projects }) {
         <Link to={`/projects/${project.id}`} key={project?.id ?? Math.random()}>
           <h4>{project?.name}</h4>
           <p>Due by {project?.dueDate.toDate().toDateString()}</p>
-          {/* To add category */}
           <span style={{ backgroundColor: getCategoryColor(project?.category), padding: '2px 8px', borderRadius: '4px', marginLeft: '8px' }}>
               {project?.category}
           </span>
