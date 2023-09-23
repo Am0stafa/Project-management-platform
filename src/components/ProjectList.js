@@ -33,7 +33,17 @@ export default function ProjectList({ projects }) {
     return answer
   }
   const pros = change()
-
+  
+  const getCategoryColor = (category) => {
+    switch(category) {
+      case 'development': return '#4CAF50';  // Green
+      case 'bug': return '#FFC107';          // Yellow
+      case 'security issue': return '#F44336';  // Red
+      case 'business issue': return '#2196F3';  // Blue
+      default: return '#9E9E9E';              // Grey for unknown categories
+    }
+  }
+  
 
   return (
     <div className="project-list">
@@ -42,6 +52,11 @@ export default function ProjectList({ projects }) {
         <Link to={`/projects/${project.id}`} key={project?.id ?? Math.random()}>
           <h4>{project?.name}</h4>
           <p>Due by {project?.dueDate.toDate().toDateString()}</p>
+          {/* To add category */}
+          <span style={{ backgroundColor: getCategoryColor(project?.category), padding: '2px 8px', borderRadius: '4px', marginLeft: '8px' }}>
+              {project?.category}
+          </span>
+
           <div className="assigned-to">
             <p><strong>Assigned to:</strong></p>
             <ul>

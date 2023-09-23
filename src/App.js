@@ -13,6 +13,7 @@ import Project from './pages/project/Project'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import OnlineUsers from './components/OnlineUsers'
+import Kanban from './pages/board/Kanban'
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -44,6 +45,10 @@ function App() {
               <Route 
                 path="/signup" 
                 element={user ? <Navigate to="/" />:<Signup />}/>
+            
+              <Route 
+                path="/kanban" 
+                element={!user ? <Navigate to="/" />:<Kanban />}/>
 
             </Routes>
           </div>

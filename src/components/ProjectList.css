@@ -36,3 +36,9 @@
   width: 30px;
   height: 30px;
 }
+.project-list span {
+  display: inline-block;
+  font-size: 0.8em;
+  color: #fff;
+  font-weight: bold;
+}
