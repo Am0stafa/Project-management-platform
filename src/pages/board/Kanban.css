@@ -200,13 +200,12 @@ h1 {
   margin-right: 5px;
 }
 .task__owner {
-  width: 25px;
-  height: 25px;
-  border-radius: 100rem;
-  position: absolute;
-  display: inline-block;
-  right: 0;
-  bottom: 0;
+  /* existing styles */
+  display: flex; /* Add this line to make its children line up horizontally */
+  overflow-x: auto; /* Add this line to allow horizontal scrolling in case there are many avatars */
+}
+.task__owner li {
+  margin-right: 5px; /* adjust as needed */
 }
 
 .task-hover {

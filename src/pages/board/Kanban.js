@@ -19,6 +19,7 @@ function Kanban() {
   });
 
   useEffect(() => {
+    console.log(projects)
     if (projects) {
       const formattedColumns = projects.reduce((acc, project) => {
         acc[project.type]?.tasks.push(project);
@@ -93,10 +94,10 @@ function Kanban() {
                           {(provided) => (
                             <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className="task">
                               <div className="task__tags">
-                                <span className="task__tag" style={{ backgroundColor: getCategoryColor(project.category) }}>{project.category}</span>
+                                <span className="task__tag" style={{ backgroundColor: getCategoryColor(project.category),color: 'black' }}>{project.category}</span>
                                 <button className="task__options"><i className="fas fa-ellipsis-h"></i></button>
                               </div>
-                              <p>{project.name}</p>
+                              <p style={{color: 'black'}}>{project.name}</p>
                               <div className="task__stats">
                                 <span>
                                   <time dateTime={formatDate(project.createdAt)}>
