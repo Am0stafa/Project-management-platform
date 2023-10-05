@@ -57,7 +57,20 @@ export default function Create() {
     };
     
     await addDocument(project)
+
+    // get all the users from the assignedUsersList
+    assignedList = project?.assignedUsersList?.map((ass)=>{
+      const { documents } = useCollection('users', [firebase.firestore.FieldPath.documentId(), "==", ass])
+      return documents?.[0]
+
+      })
+
+    // get how is it created by from the createdBy
+    const { documents:createdUser } = useCollection('users', [firebase.firestore.FieldPath.documentId(), "==", project.createdBy])
     
+    //send email using cloud function
+
+
     if (!response.error) {
       history('/')
     }

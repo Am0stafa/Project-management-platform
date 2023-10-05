@@ -19,7 +19,6 @@ function Kanban() {
   });
 
   useEffect(() => {
-    console.log(projects)
     if (projects) {
       const formattedColumns = projects.reduce((acc, project) => {
         acc[project.type]?.tasks.push(project);
