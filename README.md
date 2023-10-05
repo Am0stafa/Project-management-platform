@@ -21,7 +21,7 @@ A collaborative project management tool designed to streamline task assignment, 
 
 ## Demo Video
 
-Check out the [video demonstration](your-video-link-here) to see the app in action.
+Check out the video demonstration and see the app in action.
 
 ## Installation
 
